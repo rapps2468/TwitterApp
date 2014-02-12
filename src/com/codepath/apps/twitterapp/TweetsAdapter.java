@@ -16,9 +16,23 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class TweetsAdapter extends ArrayAdapter<Tweet> {
 
-	public TweetsAdapter(Context context, List<Tweet> tweets) {
-		super(context, R.layout.tweet_item, tweets);
+	public View.OnClickListener getOnClickHandler() {
+		return onClickHandler;
 	}
+
+
+	public void setOnClickHandler(View.OnClickListener onClickHandler) {
+		this.onClickHandler = onClickHandler;
+	}
+
+
+	View.OnClickListener onClickHandler;
+
+	public TweetsAdapter(Context context, List<Tweet> tweets, View.OnClickListener onClickHandler) {
+		super(context, R.layout.tweet_item, tweets);
+		this.onClickHandler = onClickHandler;
+	}
+
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
@@ -31,6 +45,13 @@ public class TweetsAdapter extends ArrayAdapter<Tweet> {
 		Tweet tweet = getItem(position);
 
 		ImageView imageView = (ImageView) view.findViewById(R.id.ivProfile);
+
+		imageView.setTag(position);
+		if (onClickHandler != null)
+		{
+			imageView.setOnClickListener(onClickHandler);
+		}
+
 		ImageLoader.getInstance().displayImage(tweet.getUser().getProfileImageUrl(), imageView);
 
 		TextView nameView = (TextView) view.findViewById(R.id.tvName);

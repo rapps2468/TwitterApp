@@ -1,18 +1,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item
-        android:id="@+id/miRefresh"
-        android:icon="@drawable/ic_refresh"
+
+        <item
+        android:id="@+id/miMyProfile"
+        android:icon="@drawable/ic_myprofile"
         android:showAsAction="ifRoom|withText"
-        android:title="@string/refresh"
-        android:onClick="refreshTimeline"/>
+        android:title="@string/myprofile"/>
     
     
     <item
         android:id="@+id/miCompose"
         android:icon="@drawable/ic_compose"
         android:showAsAction="ifRoom|withText"
-        android:title="@string/compose"
-        android:onClick="composeTweet"/>
+        android:title="@string/compose"/>
+    
+
     
 
 </menu>

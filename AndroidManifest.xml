@@ -44,17 +44,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.codepath.apps.twitterapp.TimelineActivity"
+            android:name="com.codepath.apps.twitterapp.MainActivity"
             android:label="@string/title_activity_timeline" >
         </activity>
         <activity
             android:name="com.codepath.apps.twitterapp.ComposeTweetActivity"
             android:label="@string/title_activity_compose_tweet"
-            android:parentActivityName="com.codepath.apps.twitterapp.TimelineActivity" >
+            android:parentActivityName="com.codepath.apps.twitterapp.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.codepath.apps.twitterapp.TimelineActivity" />
+                android:value="com.codepath.apps.twitterapp.MainActivity" />
         </activity>
-    </application>
+
+        <activity
+            android:name="com.codepath.apps.twitterapp.UserProfileActivity"
+            android:label="@string/title_activity_user_profile"
+            android:parentActivityName="com.codepath.apps.twitterapp.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.codepath.apps.twitterapp.MainActivity" />
+        </activity>
+        
+        </application>
 
 </manifest>

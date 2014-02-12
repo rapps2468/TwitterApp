@@ -1,6 +1,7 @@
 // models/Tweet.java
 package com.codepath.apps.twitterapp.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -12,26 +13,33 @@ import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 
 @Table(name = "Tweets")
-public class Tweet extends Model {
+public class Tweet extends Model implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4398613498703183184L;
+
+
+
 	// Define database columns and associated fields
 	@Column(name = "tweet_id")
 	long tweetId;
-	
+
 
 
 	@Column(name = "userHandle")
 	String userHandle;
 	@Column(name = "tweet_timestamp")
 	String timestamp;
-	
+
 	@Column(name = "body")
 	String body;
-	
+
 	@Column(name = "user")
 	private User user;
 
-	
-	
+
+
 	public long getTweetId() {
 		return tweetId;
 	}
@@ -40,7 +48,7 @@ public class Tweet extends Model {
 	public void setTweetId(long tweetId) {
 		this.tweetId = tweetId;
 	}
-	
+
 	public User getUser() {
 		return user;
 	}

@@ -14,8 +14,8 @@ import com.activeandroid.annotation.Table;
 
 @Table(name = "Tweets")
 public class User extends Model implements Serializable {
-	
-	
+
+
 	/**
 	 * 
 	 */
@@ -24,34 +24,65 @@ public class User extends Model implements Serializable {
 	// Define database columns and associated fields
 	@Column(name = "name")
 	String name;
-	
+
 	@Column(name = "user_id")
 	long userId;
-	
+
 	@Column(name = "screen_name")
 	String screen_name;
-	
+
 	@Column(name = "profile_image_url")
 	String profile_image_url;
-	
+
 	@Column(name = "profile_background_image_url")
 	String profile_background_image_url;
-	
+
 	@Column(name = "num_tweets")
 	int num_tweets;
-	
+
 	@Column(name = "followers_count")
 	int followers_count;
-	
+
 	@Column(name = "friends_count")
 	int friends_count;
-	
-	public User() {
-	    super();
+
+	public String getTagline() {
+		return tagline;
 	}
 
-	
-	
+
+
+	public void setTagline(String tagline) {
+		this.tagline = tagline;
+	}
+
+
+
+
+	@Column(name = "tagline")
+	String tagline;
+
+	@Column(name = "following_count")
+	int following_count;
+
+
+
+	public int getFollowingCount() {
+		return following_count;
+	}
+
+
+
+	public void setFollowingCount(int following_count) {
+		this.following_count = following_count;
+	}
+
+	public User() {
+		super();
+	}
+
+
+
 	// Add a constructor that creates an object from the JSON response
 	public User(JSONObject object){
 		super();
@@ -65,6 +96,8 @@ public class User extends Model implements Serializable {
 			this.num_tweets = object.getInt("statuses_count");
 			this.followers_count = object.getInt("followers_count");
 			this.friends_count = object.getInt("friends_count");
+			this.following_count = object.getInt("friends_count");
+			this.tagline = object.getString("description");
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -185,7 +218,7 @@ public class User extends Model implements Serializable {
 	public void setFriendsCount(int friends_count) {
 		this.friends_count = friends_count;
 	}
-	
-	
-	
+
+
+
 }

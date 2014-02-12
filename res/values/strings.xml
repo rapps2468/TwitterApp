@@ -8,8 +8,10 @@
     <string name="login_label">Log in</string>
     <string name="title_activity_timeline">Twitter App</string>
     <string name="compose">Tweet</string>
+    <string name="myprofile">My profile</string>
     <string name="refresh">Refresh timeline</string>
     <string name="title_activity_compose_tweet">Compose Tweet</string>
+    <string name="title_activity_user_profile">User Profile</string>
     <string name="tweet">Tweet</string>
     <string name="cancel_tweet">Cancel</string>
     <string name="enter_tweet">Enter tweet</string>

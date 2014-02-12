@@ -20,9 +20,9 @@ import com.codepath.apps.twitterapp.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 public class ComposeTweetActivity extends Activity {
-	
+
 	EditText etTweet;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -68,38 +68,38 @@ public class ComposeTweetActivity extends Activity {
 	}
 
 	public void cancelTweet(View button) {
-        Intent i = new Intent();
-        setResult(RESULT_OK, i);
-        finish();
+		Intent i = new Intent();
+		setResult(RESULT_CANCELED, i);
+		finish();
 	}
 
 	public void composeTweet(View button) {
-		
+
 		String tweetMessage = etTweet.getText().toString();
-		
-        Intent data = new Intent();
-        
-    	TwitterApp.getRestClient().postTweet(tweetMessage, 
-    			new JsonHttpResponseHandler() {
-    		@Override
-    		public void onSuccess(int arg0, JSONArray jsonTweets) {
-    			Log.d("DEBUG", "POSTRESULT: " + jsonTweets.toString());
 
-    			ArrayList<Tweet> newTweets = Tweet.fromJson(jsonTweets);
+		Intent data = new Intent();
 
-    		}
-    	});
+		TwitterApp.getRestClient().postTweet(tweetMessage, 
+				new JsonHttpResponseHandler() {
+			@Override
+			public void onSuccess(int arg0, JSONArray jsonTweets) {
+				Log.d("DEBUG", "POSTRESULT: " + jsonTweets.toString());
 
-        
-        data.putExtra("tweet_message", tweetMessage);
-        setResult(RESULT_OK, data);
-        finish();
+				ArrayList<Tweet> newTweets = Tweet.fromJson(jsonTweets);
+
+			}
+		});
+
+
+		data.putExtra("tweet_message", tweetMessage);
+		setResult(RESULT_OK, data);
+		finish();
 	}
 
-    public void setupViews() {
-    	etTweet = (EditText) findViewById(R.id.etMessage);
-    }
-    
+	public void setupViews() {
+		etTweet = (EditText) findViewById(R.id.etMessage);
+	}
+
 
 
 }
